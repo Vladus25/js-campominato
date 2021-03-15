@@ -37,7 +37,7 @@ priceBtn.addEventListener('click', function() {
 
     console.log(rndArray);
     // Arrei dei numeri scelti dall'utente
-    var numberUserArr = [];
+    var numbersUserArr = [];
 
     // Diverse Difficoltà del gioco
     var round = max - 16;
@@ -47,26 +47,26 @@ priceBtn.addEventListener('click', function() {
       var numberUser = parseInt(prompt('Inserisci un numero tra 1 e ' + max));
 
       // Se numero uguale agli primi mi compare errore alert
-      if (numberUserArr.includes(numberUser)) {
+      if (numbersUserArr.includes(numberUser)) {
         alert('Avete inserito un numero identico a uno dei precedenti')
       }
       // Se numero diverso dagli primi mi aggiunge in arrei
       else {
-        numberUserArr.push(numberUser);
-        console.log(numberUserArr);
+        numbersUserArr.push(numberUser);
+        console.log(numbersUserArr);
       }
 
       // Quando utente sbaglia finisce il ciclo
       if (rndArray.includes(numberUser)) {
-        var numberLost = numberUserArr[numberUserArr.length - 1];
-        numberUserArr.pop();
+        var numberLost = numbersUserArr[numbersUserArr.length - 1];
+        numbersUserArr.pop();
         console.log( 'Numero sbagliato: ' + numberLost);
-        console.log('Hai Perso, ma avete inserito numeri giusti per: ' + numberUserArr.length + ' volte.');
-        var gameLose = document.getElementById('gameLose').innerHTML = 'Hai Perso, ma avete inserito numeri giusti per: ' + numberUserArr.length + ' volte.';
+        console.log('Hai Perso, ma avete inserito numeri giusti per: ' + numbersUserArr.length + ' volte.');
+        var gameLose = document.getElementById('gameLose').innerHTML = 'Hai Perso, ma avete inserito numeri giusti per: ' + numbersUserArr.length + ' volte.';
         break;
       }
       // Se per caso riesce ad indovinare tutti numeri Vince
-      else if(numberUserArr.length == round){
+      else if(numbersUserArr.length == round){
         var gameWin = document.getElementById('gameWin').innerHTML = 'Hai Vinto';
         console.log('Hai Vinto');
       }
@@ -74,11 +74,11 @@ priceBtn.addEventListener('click', function() {
     }
 
     var numbersPc = document.getElementById('numbersPc').innerHTML = 'Il computer ha generato 16 numeri : ' + rndArray;
-    var numbersUser = document.getElementById('numbersUser').innerHTML = 'I tuoi numeri giusti sono: ' + numberUserArr;
+    var numbersUser = document.getElementById('numbersUser').innerHTML = 'I tuoi numeri giusti sono: ' + numbersUserArr;
     var numberLost = document.getElementById('numberLost').innerHTML = 'Numero perso: ' + numberLost;
   }
 
-  var difficulty = prompt('Scegli la difficolta tra 1 = (facile da 1-50), 2 = (medio da 1-80), 3 = (difficile da 1-100)')
+  var difficulty = prompt(' Scegli la difficolta \n 1 = (facile da 1-50) \n 2 = (medio da 1-80) \n 3 = (difficile da 1-100)')
 
   // Diverse Difficolta del gioco che partono se utente inserisce da 1-3
   if (difficulty == 1) {

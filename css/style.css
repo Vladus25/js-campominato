@@ -1,0 +1,26 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: rgb(215, 124, 124);
+}
+
+.contenitore{
+  text-align: center;
+}
+
+button{
+  border: none;
+  border-radius: 10px;
+  background-color: #24d24a;
+  padding: 15px 20px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+h1{
+  margin: 10px 0;
+}

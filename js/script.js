@@ -19,74 +19,97 @@
 // Le validazioni e i controlli possiamo farli anche in un secondo momento.
 // Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve…
 
-function numberRandom(min, max){
+var priceBtn = document.getElementById('calculate');
+priceBtn.addEventListener('click', function() {
 
-  var rndArray = [];
+  function numberRandom(min, max){
 
-  for(var i = 0; i < 16; i++){
-    var rndMin = min;
-    var rndMax = max - min + 1;
-    var rnd = Math.floor(Math.random() * rndMax) + rndMin;
-    var nuovo = true;
+    var rndArray = [];
 
-    for(var x = 0; x < i; x++){
+    for(var i = 0; i < 16; i++){
+      var rndMin = min;
+      var rndMax = max - min + 1;
+      var rnd = Math.floor(Math.random() * rndMax) + rndMin;
+      var nuovo = true;
 
-      if(rndArray[x] == rnd) nuovo = false;
+      for(var x = 0; x < i; x++){
+
+        if(rndArray[x] == rnd) nuovo = false;
+
+      }
+      if(nuovo){
+
+        rndArray[i] = rnd;
+
+      }else{
+
+        i--;
+
+      }
 
     }
-    if(nuovo){
 
-      rndArray[i] = rnd;
+    console.log(rndArray);
+    var numberUserArr = [];
 
-    }else{
+    if (difficulty == 1) {
+      var ret = 34;
+    }
+    else if (difficulty == 2) {
+       var ret = 64;
+    }
+    else{
+      var ret = 84
+    }
 
-      i--;
+    for (var i = 0; i < ret; i++) {
+
+      var numberUser = parseInt(prompt('Inserisci un numero:'));
+
+      if (numberUserArr.includes(numberUser) || numberUser > 101 || numberUser == 0 ) {
+        alert('Avete inserito un numero identico a uno dei precedenti ho maggiore di 100 o uguale a 0')
+      }
+      else {
+        numberUserArr.push(numberUser);
+        console.log(numberUserArr);
+      }
+
+      if (rndArray.includes(numberUser)) {
+        var numberLost = numberUserArr[numberUserArr.length - 1];
+        numberUserArr.pop();
+        console.log( 'Numero sbagliato: ' + numberLost);
+        console.log('Hai Perso, ma avete inserito numeri giusti per: ' + numberUserArr.length + ' volte.');
+        var gameLose = document.getElementById('gameLose').innerHTML = 'Hai Perso, ma avete inserito numeri giusti per: ' + numberUserArr.length + ' volte.';
+        break;
+      }
+      else if(numberUserArr.length == ret){
+        var gameWin = document.getElementById('gameWin').innerHTML = 'Hai Vinto';
+        console.log('Hai Vinto');
+      }
 
     }
 
+    var numbersPc = document.getElementById('numbersPc').innerHTML = 'Il computer ha generato 16 numeri : ' + rndArray;
+    var numbersUser = document.getElementById('numbersUser').innerHTML = 'I tuoi numeri giusti sono: ' + numberUserArr;
+    var numberLost = document.getElementById('numberLost').innerHTML = 'Numero perso: ' + numberLost;
   }
 
-  console.log(rndArray);
-  var numberUserArr = [];
+  var difficulty = prompt('Scegli la difficolta tra 1 = (facile da 1-50), 2 = (medio da 1-80), 3 = (difficile da 1-100)')
 
-  for (var i = 0; i < 84; i++) {
-
-    var numberUser = parseInt(prompt('Inserisci un numero da 1 fino 100:'));
-
-    if (numberUserArr.includes(numberUser) || numberUser > 101 || numberUser == 0 ) {
-      alert('Avete inserito un numero indetico a uno dei precedenti ho maggiore di 100')
-    }
-    else {
-      numberUserArr.push(numberUser);
-      console.log(numberUserArr);
-    }
-
-    if (rndArray.includes(numberUser)) {
-      var numberLost = numberUserArr[numberUserArr.length - 1];
-      numberUserArr.pop();
-      console.log(numberLost);
-      break;
-    }
-    else {
-
-    }
-
+  if (difficulty == 1) {
+    numberRandom(1, 50);
+    var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 1 (1-50)';
   }
-  console.log('Hai Perso, ma avete inserito numeri giusti per: ' + numberUserArr.length + ' volte.');
+  else if (difficulty == 2) {
+    numberRandom(1, 80);
+    var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 2 (1-80)';
+  }
+  else if(difficulty == 3) {
+    numberRandom(1, 100);
+    var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 3 (1-100)';
+  }
+  else {
+    alert('Avete inserito difficoltà sbagliata del gioco.')
+  }
 
-}
-
-var difficulty = prompt('Scegli la difficolta tra 1 = (facile), 2 = (medio), 3 = (difficile)')
-
-if (difficulty == 1) {
-  numberRandom(1, 50);
-}
-else if (difficulty == 2) {
-  numberRandom(1, 80);
-}
-else if(difficulty == 3) {
-  numberRandom(1, 100);
-}
-else {
-  alert('Avete inserito difficoltà sbagliata del gioco.')
-}
+});

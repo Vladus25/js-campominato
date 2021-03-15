@@ -1,24 +1,5 @@
-// Il computer deve generare 16 numeri casuali tra 1 e 100.
-// I numeri non possono essere duplicati.
-// In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
-// L’utente non può inserire più volte lo stesso numero.
-// Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
-// La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
-// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
-// BONUS: (da fare solo se funziona tutto il resto)
-// all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
-// con difficoltà 0 => tra 1 e 100
-// con difficoltà 1 => tra 1 e 80
-// con difficoltà 2 => tra 1 e 50
-// Consigli del giorno: :party_wizard:
-// Scriviamo prima cosa vogliamo fare passo passo in italiano, dividiamo il lavoro in micro problemi.
-// Ad esempio:
-// Di cosa ho bisogno per generare i numeri?
-// Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
-// Proviamo prima con pochi numeri, inserire 86 numeri ogni volta potrebbe essere un po’ scocciante :wink:
-// Le validazioni e i controlli possiamo farli anche in un secondo momento.
-// Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve…
 
+// Funzione associata ad buttone
 var priceBtn = document.getElementById('calculate');
 priceBtn.addEventListener('click', function() {
 
@@ -58,20 +39,12 @@ priceBtn.addEventListener('click', function() {
     // Arrei dei numeri scelti dall'utente
     var numberUserArr = [];
 
-    // Diverse Difficolta del gioco
-    if (difficulty == 1) {
-      var round = 34;
-    }
-    else if (difficulty == 2) {
-       var round = 64;
-    }
-    else{
-      var round = 84
-    }
+    // Diverse Difficoltà del gioco
+    var round = max - 16;
 
     for (var i = 0; i < round; i++) {
 
-      var numberUser = parseInt(prompt('Inserisci un numero:'));
+      var numberUser = parseInt(prompt('Inserisci un numero tra 1 e ' + max));
 
       // Se numero uguale agli primi mi compare errore alert
       if (numberUserArr.includes(numberUser)) {
@@ -83,7 +56,7 @@ priceBtn.addEventListener('click', function() {
         console.log(numberUserArr);
       }
 
-      // Guando utente sbaglia finisce il ciclo
+      // Quando utente sbaglia finisce il ciclo
       if (rndArray.includes(numberUser)) {
         var numberLost = numberUserArr[numberUserArr.length - 1];
         numberUserArr.pop();
@@ -107,7 +80,7 @@ priceBtn.addEventListener('click', function() {
 
   var difficulty = prompt('Scegli la difficolta tra 1 = (facile da 1-50), 2 = (medio da 1-80), 3 = (difficile da 1-100)')
 
-  // Diverse Difficolta del gioco che partano se utente inserisce da 1-3
+  // Diverse Difficolta del gioco che partono se utente inserisce da 1-3
   if (difficulty == 1) {
     numberRandom(1, 50);
     var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 1 (1-50)';

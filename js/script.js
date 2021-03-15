@@ -60,16 +60,16 @@ priceBtn.addEventListener('click', function() {
 
     // Diverse Difficolta del gioco
     if (difficulty == 1) {
-      var ret = 34;
+      var round = 34;
     }
     else if (difficulty == 2) {
-       var ret = 64;
+       var round = 64;
     }
     else{
-      var ret = 84
+      var round = 84
     }
 
-    for (var i = 0; i < ret; i++) {
+    for (var i = 0; i < round; i++) {
 
       var numberUser = parseInt(prompt('Inserisci un numero:'));
 
@@ -93,7 +93,7 @@ priceBtn.addEventListener('click', function() {
         break;
       }
       // Se per caso riesce ad indovinare tutti numeri Vince
-      else if(numberUserArr.length == ret){
+      else if(numberUserArr.length == round){
         var gameWin = document.getElementById('gameWin').innerHTML = 'Hai Vinto';
         console.log('Hai Vinto');
       }

@@ -78,23 +78,49 @@ priceBtn.addEventListener('click', function() {
     var numberLost = document.getElementById('numberLost').innerHTML = 'Numero perso: ' + numberLost;
   }
 
-  var difficulty = prompt(' Scegli la difficolta \n 1 = (facile da 1-50) \n 2 = (medio da 1-80) \n 3 = (difficile da 1-100)')
+  function gameDifficulty(){
 
-  // Diverse Difficolta del gioco che partono se utente inserisce da 1-3
-  if (difficulty == 1) {
-    numberRandom(1, 50);
-    var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 1 (1-50)';
+    var difficulty = parseInt(prompt(' Scegli la difficolta \n 1 = (facile da 1-50) \n 2 = (medio da 1-80) \n 3 = (difficile da 1-100)'));
+
+    // Diverse Difficolta del gioco che partono se utente inserisce da 1-3
+    // if (difficulty == 1) {
+    //   numberRandom(1, 50);
+    //   var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 1 (1-50)';
+    // }
+    // else if (difficulty == 2) {
+    //   numberRandom(1, 80);
+    //   var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 2 (1-80)';
+    // }
+    // else if(difficulty == 3) {
+    //   numberRandom(1, 100);
+    //   var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 3 (1-100)';
+    // }
+    // else {
+    //   alert('Avete inserito difficoltà sbagliata del gioco.')
+    // }
+
+    // Diverse Difficolta del gioco che partono se utente inserisce da 1-3
+    switch (difficulty) {
+      case 1:
+        numberRandom(1, 50);
+        var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 1 (1-50)';
+        break;
+
+      case 2:
+        numberRandom(1, 80);
+        var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 2 (1-80)';
+        break;
+      case 3:
+        numberRandom(1, 100);
+        var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 3 (1-100)';
+        break;
+
+      default:
+      alert('Avete inserito difficoltà sbagliata del gioco.');
+      break;
+    }
   }
-  else if (difficulty == 2) {
-    numberRandom(1, 80);
-    var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 2 (1-80)';
-  }
-  else if(difficulty == 3) {
-    numberRandom(1, 100);
-    var lvl = document.getElementById('lvl').innerHTML = 'Hai scelto dificolta: 3 (1-100)';
-  }
-  else {
-    alert('Avete inserito difficoltà sbagliata del gioco.')
-  }
+
+  gameDifficulty();
 
 });
